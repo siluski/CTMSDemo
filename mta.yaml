@@ -1,4 +1,3 @@
----
 _schema-version: '3.1'
 ID: CTMSTest
 version: 1.0.0
@@ -26,6 +25,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: CTMSTest-db
+      - name: CTMSTest-auth
 
   - name: CTMSTest-db-deployer
     type: hdb
@@ -41,3 +41,12 @@ resources:
     parameters:
       service: hana # or 'hanatrial' on trial landscapes
       service-plan: hdi-shared
+  - name: CTMSTest-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: CTMSTest-${org}-${space}
+        tenant-mode: dedicated

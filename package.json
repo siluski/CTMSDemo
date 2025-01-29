@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^8.6.1",
-    "@sap/xssec": "^3.2.17",
+    "@sap/xssec": "^4",
     "express": "^4",
     "hdb": "^0.19.5"
   },
@@ -46,7 +46,8 @@
     "requires": {
       "db": {
         "kind": "hana-cloud"
-      }
+      },
+      "auth": "xsuaa"
     }
   }
 }
